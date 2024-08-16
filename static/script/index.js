@@ -38,7 +38,7 @@ app.destroyParticles = function() {
 document.querySelector('#open-nav').addEventListener('click', app.openNav);
 document.querySelector('#close-nav').addEventListener('click', app.closeNav);
 
-document.title = localStorage.getItem('incog||title') || 'Incognito';
+document.title = localStorage.getItem('incog||title') || 'Google Classroom';
 window.icon = document.querySelector('#favicon');
 
 icon.href = localStorage.getItem('incog||icon') || './index.svg';
@@ -128,18 +128,7 @@ document.querySelector('#access-form').addEventListener('submit', event => {
     document.querySelector('.access-panel').style.removeProperty('display');
 });
 
-document.querySelector('.close-access').addEventListener('click', event => {
-    event.preventDefault();
-    app.main.target.style.display = 'block';
-    app.header.target.style.display = 'flex';
-    
-    const frame = document.querySelector('.access-frame');
 
-    frame.src = 'about:blank';
-    frame.style.display = 'none';
-
-    document.querySelector('.access-panel').style.display = 'none';
-});
 
 document.querySelector('.refresh-access').addEventListener('click', () => {
     const frame = document.querySelector('.access-frame');
@@ -152,17 +141,7 @@ document.querySelector('.refresh-access').addEventListener('click', () => {
     };
 });
 
-document.querySelector('.access-link').addEventListener('click', () => {
-    const frame = document.querySelector('.access-frame');
-    const win = frame.contentWindow;
-    
-    if (win.__uv) {
-        navigator.clipboard.writeText(
-            new URL('./?link=' + encodeURIComponent(btoa(win.__uv.location.href)), location.href).href
-        );
-    };
 
-});
 
 document.querySelector('.access-panel .controls .icon').addEventListener('error', event => {
     event.target.src = 'img/globe.svg';
@@ -173,36 +152,8 @@ document.querySelector('.access-panel').addEventListener('mouseenter', async eve
     const frame = document.querySelector('.access-frame');
     const win = frame.contentWindow;
 
-    if (win && win.__uv) {
-        document.querySelector('.access-panel .controls input').value = Object.getOwnPropertyDescriptor(Document.prototype, 'title').get.call(win.document);
-        const favi = document.querySelector.call(win.document, 'link[rel=icon]');
-
-        if (favi && Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href').get.call(favi)) {
-            const res = await win.__uv.client.fetch.fetch.call(
-                win,
-                Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href').get.call(favi)
-            );
-
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-
-            document.querySelector('.access-panel .controls .icon').src = url;
-            URL.revokeObjectURL(url);
-        } else {
-            const res = await win.__uv.client.fetch.fetch.call(
-                win,
-                win.__uv.rewriteUrl(
-                    '/favicon.ico'
-                )
-            );
-
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-
-            document.querySelector('.access-panel .controls .icon').src = url;
-            URL.revokeObjectURL(url);
-        };
-    };
+  
+    
 });
 
 app.on('default', access);

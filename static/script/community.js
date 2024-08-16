@@ -7,12 +7,12 @@ function community(app) {
         'div', 
         [
             app.createElement('section', [
-                app.createElement('p', 'You are being taken to the sp0ck/swordfish network Discord server (discord.gg/r48KCCH7Sw).', {
+                app.createElement('p', 'You are being taken to antlr.xyz', {
                         style: {
                             'margin-bottom': '0'
                         }
                     }),
-                    app.createElement('p', 'Are you sure you want to <a href="https://discord.gg/r48KCCH7Sw">proceed</a>?', {
+                    app.createElement('p', '', {
                         style: {
                             'margin-bottom': '0'
                         }

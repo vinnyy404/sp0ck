@@ -1,6 +1,6 @@
 
 const tips = [
-    'welcome to sp0ck!',
+    'antlr!',
 
 ];
 
@@ -16,7 +16,7 @@ function access(app) {
     app.search.logo.style.marginLeft = '0';
     app.search.submit.style.display = 'inline';
     app.search.input.style.removeProperty('display');
-    app.search.input.placeholder = 'Search the web with, sp0ck.';
+    app.search.input.placeholder = 'antlr.';
     app.header.target.setAttribute('data-page', '');
     app.nav.target.style.removeProperty('display');
     document.querySelector('#open-nav').setAttribute('data-open', '');
@@ -24,13 +24,8 @@ function access(app) {
 
 
     
-    app.nav.community = app.createLink('#community', 'Join our Discord!');
-    app.nav.support = app.createLink('#support', 'Q&A');
-    app.nav.apps = app.createLink('#apps', 'Websites(Quick Links)');
-    app.nav.games = app.createLink('#gs', 'Games');
-    app.nav.settings = app.createLink('#settings', '<i class="fas fa-sliders-h secondary"></i>', {
-        id: 'apps'
-    })
+   
+  
     if(localStorage.getItem('incog||disabletips') !== 'none') app.main.tip = app.createElement('div', tips[Math.floor(Math.random()*tips.length)], { class: 'tip' });
 
     app.main.suggestions = app.createElement('div', [], {
